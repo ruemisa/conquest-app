@@ -1,0 +1,9 @@
+.Toolbar {
+    height: auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr .1fr;
+    grid-auto-rows: minmax(50px, auto);
+    padding: 10px 5px;
+    background-color: teal;
+}

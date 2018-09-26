@@ -34,7 +34,18 @@ class Dashboard extends Component {
                     open={ this.state.showDropDown }
                     closed={ this.dropDownClosedHandler }/>
                 <div>
-                    <h2>Welcome to your dashboard!</h2>
+                    <div>MAP</div>
+                    <button>Expand +</button>
+                </div>
+
+                <div>
+                    <h2>Notification</h2>
+                    <ul>
+                        <li>List</li>
+                        <li>List</li>
+                        <li>List</li>
+                        <li>List</li>
+                    </ul>
                 </div>
             </React.Fragment>            
         );

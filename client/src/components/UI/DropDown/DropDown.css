@@ -17,5 +17,5 @@
 }
 
 .Close {
-  transform: translate(-100%, -100%);
+  transform: translate(200%, -100%);
 }

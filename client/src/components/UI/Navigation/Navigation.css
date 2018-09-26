@@ -1,0 +1,11 @@
+.Navigation {
+  padding: 15px 5px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.Navigation li {
+  padding: 15px 5px;
+}
+

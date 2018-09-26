@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-// import { Link } from 'react-router-dom';
 class Profile extends Component {
 
     onClickHandler = () => {
@@ -10,11 +10,27 @@ class Profile extends Component {
     render() {
 
         return (
+                <div>
+                    <div>
+                        PROFILE HUB
 
-            <div>
-                <h2>Welcome to your Profile!</h2>
-                <button onClick={ this.onClickHandler }>Back</button>
-            </div>
+                        <h3>Name</h3>
+                        <p>Location</p>
+                        <Link to="#">Edit</Link>
+                    </div>
+
+                    <div>
+                        <h2> Friends </h2>
+                        <ul>
+                            <li>Friend</li>
+                            <li>Friend</li>
+                            <li>Friend</li>
+                        </ul>
+                        <Link to="/user/:id/friends">See All</Link>
+                    </div>
+
+                    <button onClick={ this.onClickHandler }>Back</button>
+                </div>
         );
     }
 
