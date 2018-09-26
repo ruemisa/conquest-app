@@ -1,0 +1,12 @@
+.Landing {
+  text-align: center;
+}
+
+.Text {
+  margin: 20px auto;
+}
+
+.Landing button {
+  display: block;
+  margin: 10px auto;
+}
