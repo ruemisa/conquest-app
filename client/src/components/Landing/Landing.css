@@ -1,12 +1,43 @@
 .Landing {
+  height: auto;
   text-align: center;
+  padding: 185px 0;
+  /* background-color: orange; */
 }
 
 .Text {
-  margin: 20px auto;
+  margin: auto;
+  padding: 50px 0;
+}
+
+.Text h1 {
+  padding: 10px 0;
+  margin-bottom: 15px;
+  font-size: 2.3rem;
+  letter-spacing: 10px;
+}
+
+.Text p {
+  font-size: 1.3rem;
 }
 
 .Landing button {
   display: block;
-  margin: 10px auto;
+  margin: 50px auto;
+  padding: 10px;
+  width: 40%;
+  border: none;
+  color: #fafafa;
+  font-size: 1.1rem;
+  font-weight: 700;
+  box-shadow: 10px 10px 50px 0px rgba(0,0,0,0.45);
+  font-family: inherit;
+}
+
+.Login {
+  background-color: blue;
+}
+
+.Signup {
+  background-color: red;
 }

@@ -4,6 +4,14 @@
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+  width: 100%;
+  line-height: 1.4;
+  font-family: 'Kodchasan', sans-serif;
+  /* background-color: orange; */
+}
+
 a {
   color: inherit;
   text-decoration: none;

@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import Toolbar from '../UI/Toolbar/Toolbar';
 import DropDown from '../UI/DropDown/DropDown';
 
+import styles from './Dashboard.css';
+
 class Dashboard extends Component {
     constructor(props) {
         super(props);
@@ -23,6 +25,10 @@ class Dashboard extends Component {
         });
     }
 
+    mapExpandHandler = () => {
+        console.log('clicked');
+    }
+
 
     render() {
 
@@ -34,8 +40,8 @@ class Dashboard extends Component {
                     open={ this.state.showDropDown }
                     closed={ this.dropDownClosedHandler }/>
                 <div>
-                    <div>MAP</div>
-                    <button>Expand +</button>
+                    <div className={ styles.Map }>MAP</div>
+                    <button onClick={ this.mapExpandHandler }>Expand +</button>
                 </div>
 
                 <div>
