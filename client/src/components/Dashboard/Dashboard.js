@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import Toolbar from '../UI/Toolbar/Toolbar';
-import DropDown from '../UI/DropDown/DropDown';
 import Button from '../UI/Button/Button';
 import ConquestMap from '../ConquestMap/ConquestMap';
 
@@ -12,20 +11,8 @@ class Dashboard extends Component {
         super(props);
 
         this.state = {
-            showDropDown: false,
             mapExpanded: false
         }
-    }
-
-    dropDownClosedHandler = () => {
-        this.setState({ showDropDown: false });
-    }
-
-    dropDownToggleHandler = () => {
-        console.log('clicked');
-        this.setState( ( prevState ) => {
-            return { showDropDown: !prevState.showDropDown };
-        });
     }
 
     mapClosedHandler = () => {
@@ -44,11 +31,7 @@ class Dashboard extends Component {
         if (this.state.mapExpanded) {
             return (
                 <React.Fragment>
-                    <Toolbar 
-                        dropDownClicked={ this.dropDownToggleHandler }/>
-                    <DropDown 
-                        open={ this.state.showDropDown }
-                        closed={ this.dropDownClosedHandler }/>
+                    <Toolbar />
                     <div className={ styles.MapArea }>
                         <ConquestMap mapType="Expanded"/>
                         <Button
@@ -64,11 +47,7 @@ class Dashboard extends Component {
         } else {
             return (
                 <React.Fragment>
-                    <Toolbar 
-                        dropDownClicked={ this.dropDownToggleHandler }/>
-                    <DropDown 
-                        open={ this.state.showDropDown }
-                        closed={ this.dropDownClosedHandler }/>
+                    <Toolbar />
                     <div className={ styles.MapArea }>
                         <ConquestMap mapType="Compact" />
                         <Button

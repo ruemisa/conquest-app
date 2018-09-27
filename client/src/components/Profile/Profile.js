@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
+import ToolBar from '../UI/Toolbar/Toolbar';
+import Button from '../UI/Button/Button';
+import ProfileBio from './ProfileBio/ProfileBio';
+import ImageHolder from '../../images/profile.png';
+import styles from './Profile.css';
 class Profile extends Component {
 
     onClickHandler = () => {
@@ -10,27 +14,29 @@ class Profile extends Component {
     render() {
 
         return (
-                <div>
-                    <div>
-                        PROFILE HUB
+            <React.Fragment>
+                <ToolBar />
+                <ProfileBio
+                    profileImg={ ImageHolder }
+                    name="Ruel"
+                    location="Brooklyn, NY"/>
 
-                        <h3>Name</h3>
-                        <p>Location</p>
-                        <Link to="#">Edit</Link>
-                    </div>
-
-                    <div>
-                        <h2> Friends </h2>
-                        <ul>
-                            <li>Friend</li>
-                            <li>Friend</li>
-                            <li>Friend</li>
-                        </ul>
-                        <Link to="/user/:id/friends">See All</Link>
-                    </div>
-
-                    <button onClick={ this.onClickHandler }>Back</button>
+                <div className={ styles.StatsList }>
+                    <h2> Personal Stats </h2>
+                    <ul>
+                        <li>Takeovers: ?</li>
+                        <li>Weekly Score: ? </li>
+                        <li>W/L ratio: ?</li>
+                    </ul>
                 </div>
+
+                <Button 
+                    onClick={ this.onClickHandler } 
+                    btnType="Back"
+                    btnSize="Medium">
+                    Back    
+                </Button>
+            </React.Fragment>
         );
     }
 

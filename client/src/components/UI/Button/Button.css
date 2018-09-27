@@ -28,6 +28,10 @@
   background-color: red;
 }
 
+.Back {
+  background-color: rgba(0, 0, 0, .75);
+}
+
 /* Button Sizes */
 
 .Large {

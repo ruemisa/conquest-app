@@ -1,18 +1,25 @@
 import React, { Component } from 'react';
 
+import Button from '../UI/Button/Button';
+import ToolBar from '../UI/Toolbar/Toolbar';
 class Friends extends Component {
 
     onClickHandler = () => {
-      this.props.history.push('/user/:id/dashboard');
-  }
+        this.props.history.push('/user/:id/dashboard');
+    }
 
     render() {
         return (
-    
-            <div>
+            <React.Fragment>
+                <ToolBar />
                 <h1>FRIENDS HERE</h1>
-                <button onClick={ this.onClickHandler }>Back</button>    
-            </div>
+                <Button 
+                    onClick={ this.onClickHandler } 
+                    btnType="Back"
+                    btnSize="Medium">
+                    Back    
+                </Button>   
+            </React.Fragment>
             
         );
     }

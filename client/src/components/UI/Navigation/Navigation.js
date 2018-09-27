@@ -8,8 +8,8 @@ const navigation = () => (
         <NavigationItem link="/user/:id/profile">
             Profile
         </NavigationItem>
-        <NavigationItem link="#">
-            Scoreboard (Soon)
+        <NavigationItem link="/user/:id/friends">
+            Friends
         </NavigationItem>
         <NavigationItem link="/">
             Sign Out
