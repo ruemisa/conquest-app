@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import Button from '../UI/Button/Button';
+import Logo from '../UI/Logo/Logo';
 import styles from './Landing.css';
 
 class Landing extends Component {
@@ -16,16 +18,23 @@ class Landing extends Component {
         return (
             <div className={ styles.Landing }>
                 <div className={ styles.Text }>
+                    <Logo logoType="Landing" /> 
                     <h1>Conquest</h1>
                     <p>Tag and Conquer</p>
                 </div>
-        
-                <button
-                    className={ styles.Login }
-                    onClick={ this.onLoginLinkClick }>Log In</button>
-                <button
-                    className={ styles.Signup }
-                    onClick={ this.onSignupLinkClick }>Sign Up</button>
+
+                <Button  
+                    btnType="Login" 
+                    btnSize="Medium"
+                    onClick={ this.onLoginLinkClick }>
+                    Login 
+                </Button>
+                <Button  
+                    btnType="Signup"
+                    btnSize="Medium" 
+                    onClick={ this.onSignupLinkClick }>
+                    Sign Up
+                </Button>
             </div>
         );
     }

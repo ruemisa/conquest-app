@@ -1,29 +1,26 @@
-.Login {
+.Signup {
   height: 100%;
   width: 80%;
-  margin: 30% auto;
+  margin: 15% auto;
   padding: 30px;
   text-align: center;
 }
 
-.Login h2 {
+.Signup h2 {
   margin-bottom: 15px;
   padding: 15px 5px;
   font-size: 2.2rem;
   letter-spacing: .15rem;
 }
 
-.Login .Emphasis {
-  color: red;
-}
 
-.Login p {
+.Singup p {
   margin-bottom: 20px;
   padding: 15px 5px;
   font-size: 1.15rem;
 }
 
-.Login p a {
-  color: red;
+.Singup p a {
+  color: blue;
   font-weight: 700;
 }

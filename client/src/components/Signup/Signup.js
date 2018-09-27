@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-
+import InputField from '../UI/InputField/InputField';
+import Button from '../UI/Button/Button';
+import styles from './Signup.css';
 class SignUp extends Component {
     constructor(props) {
         super(props);
@@ -34,67 +36,65 @@ class SignUp extends Component {
         this.props.history.push('/user/:id/dashboard')
     }
 
-    // TODO: ADD REQUIRED TO ALL INPUT FIELD
 
     render() {
         return (
             
-            <React.Fragment>
-                <h2>Sign Up Page</h2>
-                <p><Link to="/login">Already have an account? Log in here</Link></p>
+            <div className={ styles.Signup }>
+                <h2>Sign Up</h2>
+                <p> Already have an account? <Link to="/login">Log in here</Link></p>
                 <form onSubmit={ this.onSubmitHandler }>
-                    <div>
-                        <input 
+
+                    <InputField 
                             type="text"
                             placeholder="First Name"
                             name="firstName"
                             value={ this.state.firstName }
-                            onChange={ this.inputChangeHandler }/>
-                    </div>
-                    <div>                    
-                        <input 
+                            onChange={ this.inputChangeHandler } />
+                    
+                    <InputField
                             type="text"
                             placeholder="Last Name"
                             name="lastName"
                             value={ this.state.lastName }
                             onChange={ this.inputChangeHandler }/>
-                    </div>
-                    <div>                    
-                        <input 
+
+                    <InputField
                             type="text"
                             placeholder="Username"
                             name="username"
                             value={ this.state.username }
                             onChange={ this.inputChangeHandler }/>
-                    </div>
-                    <div>                    
-                        <input 
+
+                    <InputField
                             type="email"
                             placeholder="Email"
                             name="email"
                             value={ this.state.email }
                             onChange={ this.inputChangeHandler }/>
-                    </div>
-                    <div>                    
-                        <input 
+
+                    <InputField
                             type="password"
                             placeholder="Password"
                             name="password"
                             value={ this.state.password }
                             onChange={ this.inputChangeHandler }/>
-                    </div>
-                    <div>                    
-                        <input 
+
+                    <InputField
                             type="password"
                             placeholder="Confirm Password"
                             name="passwordConfirm"
                             value={ this.state.passwordConfirm }
                             onChange={ this.inputChangeHandler }/>
-                    </div>
-                    <button>Sign Up</button>
+
+                    <Button 
+                        btnType="Signup"
+                        btnSize="Large">
+                        Sign Up
+                    </Button>
                 </form>
                 
-            </React.Fragment>
+            </div>
         );
     }
 

@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import InputField from '../UI/InputField/InputField';
+import Button from '../UI/Button/Button';
 import styles from './Login.css';
+
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -39,23 +42,25 @@ class Login extends Component {
                 <p>Not a member? <Link to="/signup">Sign Up</Link></p>
                 <form onSubmit={ this.onSubmitHandler }>
                     
-                    <input 
-                        type="text"
-                        placeholder="Username"
-                        name="username"
-                        value={ this.state.username }
-                        onChange={ this.inputChangeHandler }
-                        required />
-                
-                    <input 
-                        type="password"
-                        placeholder="Enter Password"
-                        name="password"
-                        value={ this.state.password }
-                        onChange={ this.inputChangeHandler }
-                        required />
+                    <InputField 
+                            type="text"
+                            placeholder="Username"
+                            name="username"
+                            value={ this.state.username }
+                            onChange={ this.inputChangeHandler } />
                     
-                    <button>Log In</button>
+                    <InputField 
+                            type="password"
+                            placeholder="Enter Password"
+                            name="password"
+                            value={ this.state.password }
+                            onChange={ this.inputChangeHandler } />
+                    
+                    <Button 
+                        btnType="Login"
+                        btnSize="Large">
+                        Log In
+                    </Button>
                 </form>
             </div>
         );

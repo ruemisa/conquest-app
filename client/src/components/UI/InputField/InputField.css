@@ -1,0 +1,15 @@
+.InputField input {
+  display: block;
+  margin-bottom: 15px;
+  width: 100%;
+  font-size: 1.05rem;
+  padding: 10px 0;
+  border: none;
+  border-bottom: 2px solid #ccc;
+}
+
+.InputField input:focus {
+  outline: none;
+  border-color: orange;
+  transition: .8s;
+}

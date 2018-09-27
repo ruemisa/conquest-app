@@ -1,4 +1,39 @@
-.Map {
-  height: 40vh;
-  background-color: orange;
+.MapArea {
+  position: relative;
+}
+
+.MapButton {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: -20px auto;
+}
+
+/* JUST IN CASE I NEED TO CHANGE IT AGAIN */
+
+/* .Btn_Compact {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: -20px auto;
+} */
+
+.NoteBlock {
+  margin: 50px auto 0 auto;
+  padding: 10px;
+  width: 90%;
+  height: auto;
+  color: #fafafa;
+  background-color: rgba(0, 0, 0, .8);
+  box-shadow: 5px 10px 40px -5px rgba(0,0,0,0.75);
+}
+
+.NoteBlock h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 1.8rem;
+  letter-spacing: .15rem;
 }
