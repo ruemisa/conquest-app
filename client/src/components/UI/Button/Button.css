@@ -32,6 +32,10 @@
   background-color: rgba(0, 0, 0, .75);
 }
 
+.Submit {
+  background-color: blue;
+}
+
 /* Button Sizes */
 
 .Large {
