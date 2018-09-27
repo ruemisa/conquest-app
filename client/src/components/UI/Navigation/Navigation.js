@@ -6,7 +6,7 @@ import styles from './Navigation.css';
 const navigation = () => (
     <ul className={ styles.Navigation }>
         <NavigationItem link="/user/:id/profile">
-            User
+            Profile
         </NavigationItem>
         <NavigationItem link="#">
             Scoreboard (Soon)
