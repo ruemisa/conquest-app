@@ -1,0 +1,35 @@
+.Friends {
+  height: auto;
+  margin-bottom: 30px;
+  padding: 25px 10px; 
+}
+
+.Friends h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  padding: 5px;
+}
+
+.Friends ul {
+  width: 90%;
+  margin: 10px auto;
+  padding: 20px 10px;
+  font-size: 1.15rem;
+  background-color: rgba(0, 0, 0, .8);
+}
+
+.Friends li {
+  padding: 10px 1px;
+  margin-bottom: 10px;
+  background-color: orange;
+}
+
+.SearchFriends {
+  width: 80%;
+  margin: 10px auto;
+}
+
+.SearchFriends h2 {
+  text-align: center;
+}

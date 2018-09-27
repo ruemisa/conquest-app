@@ -1,0 +1,56 @@
+.Button {
+  display: block;
+  padding: 10px;
+  margin: 40px auto;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #fafafa;
+  box-shadow: 10px 10px 50px 0px rgba(0,0,0,0.45);
+}
+
+/* Button Types */
+
+.Login {
+  background-color: blue;
+}
+
+.Signup {
+  background-color: red;
+}
+
+.Open {
+  background-color: blue;
+}
+
+.Close {
+  background-color: red;
+}
+
+.Back {
+  background-color: rgba(0, 0, 0, .75);
+}
+
+.Submit {
+  background-color: blue;
+}
+
+/* Button Sizes */
+
+.Large {
+  width: 80%;
+}
+
+.Medium {
+  width: 50%;
+}
+
+.Small {
+  width: 15%;
+}
+
+.Round {
+  border-radius: 100%;
+  font-size: 1.5rem;
+}

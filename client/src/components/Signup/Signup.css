@@ -1,0 +1,26 @@
+.Signup {
+  height: 100%;
+  width: 80%;
+  margin: 15% auto;
+  padding: 30px;
+  text-align: center;
+}
+
+.Signup h2 {
+  margin-bottom: 15px;
+  padding: 15px 5px;
+  font-size: 2.2rem;
+  letter-spacing: .15rem;
+}
+
+
+.Singup p {
+  margin-bottom: 20px;
+  padding: 15px 5px;
+  font-size: 1.15rem;
+}
+
+.Singup p a {
+  color: blue;
+  font-weight: 700;
+}
