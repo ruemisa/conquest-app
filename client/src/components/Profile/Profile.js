@@ -5,20 +5,56 @@ import Button from '../UI/Button/Button';
 import ProfileBio from './ProfileBio/ProfileBio';
 import ImageHolder from '../../images/profile.png';
 import styles from './Profile.css';
+import Auth from '../../modules/Auth';
+
 class Profile extends Component {
+    constructor() {
+        super();
+
+        this.state = {
+            first_name: '',
+            last_name: '',
+            profile_pic: null,
+            location: '',
+        }
+    }
+
+    componentDidMount() {
+        fetch('/profile', {
+            method: 'GET',
+            headers: {
+                token: Auth.getToken(),
+                'Authorization': `Token ${Auth.getToken()}`,
+            }
+        }).then(response => response.json())
+            .then(response => {
+                console.log(response);
+                this.setState({
+                    first_name: response.user.first_name,
+                    last_name: response.user.last_name
+                });
+            }).catch(error => {
+                console.log(error);
+            });
+    }
 
     onClickHandler = () => {
-        this.props.history.push('/user/:id/dashboard');
+        this.props.history.push('/dashboard');
     }
 
     render() {
+
+        let profileImage = ImageHolder;
+        if (this.state.profile_pic) {
+            profileImage = this.state.profile_pic;
+        };
 
         return (
             <React.Fragment>
                 <ToolBar />
                 <ProfileBio
-                    profileImg={ ImageHolder }
-                    name="Ruel"
+                    profileImg={ profileImage }
+                    name={ `${this.state.first_name} ${this.state.last_name}` }
                     location="Brooklyn, NY"/>
 
                 <div className={ styles.StatsList }>
