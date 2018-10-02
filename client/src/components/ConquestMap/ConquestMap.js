@@ -23,7 +23,7 @@ class ConquestMap extends Component {
     render() {
         return (
             <GoogleMap 
-                defaultZoom={8}
+                defaultZoom={17}
                 defaultCenter={{ lat: lat, lng: lng}} >
                 { this.props.isMarkerShown }    
             </GoogleMap>
