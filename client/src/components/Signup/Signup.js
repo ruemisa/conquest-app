@@ -5,8 +5,8 @@ import InputField from '../UI/InputField/InputField';
 import Button from '../UI/Button/Button';
 import styles from './Signup.css';
 class SignUp extends Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
 
         this.state = {
             firstName: '',
@@ -29,12 +29,12 @@ class SignUp extends Component {
         });
     }
 
-    onSubmitHandler = (e) => {
-        e.preventDefault();
+    // onSubmitHandler = (e) => {
+    //     e.preventDefault();
 
-        console.log(this.state);
-        this.props.history.push('/user/:id/dashboard')
-    }
+    //     console.log(this.state);
+    //     this.props.history.push('/dashboard')
+    // }
 
 
     render() {
@@ -43,7 +43,7 @@ class SignUp extends Component {
             <div className={ styles.Signup }>
                 <h2>Sign Up</h2>
                 <p> Already have an account? <Link to="/login">Log in here</Link></p>
-                <form onSubmit={ this.onSubmitHandler }>
+                <form onSubmit={ (e) => this.props.signupSubmit(e, this.state) }>
 
                     <InputField 
                             type="text"

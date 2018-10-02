@@ -9,20 +9,91 @@ import Friends from './components/Friends/Friends';
 import Profile from './components/Profile/Profile';
 // For Global Styles 
 import './App.css';
+import Auth from './modules/Auth';
+
 
 class App extends Component {
+    
+    constructor() {
+        super();
+        
+        this.state = {
+            auth: Auth.isUserAuthenticated()
+        }
+    }
+
+    signupSubmitHandler = (e, data) => {
+        e.preventDefault();
+        console.log(data);
+        fetch('/users', {
+            method: 'POST',
+            body: JSON.stringify({
+                user: data,
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }).then(response => response.json())
+            .then(response => {
+                // console.log(response);
+                Auth.authenticateToken(response.token);
+                this.setState({
+                    auth: Auth.isUserAuthenticated()
+                });
+            }).catch( error => {
+                console.log(error);
+            });
+    }
+
+    loginSubmitHandler = (e, data) => {
+        e.preventDefault();
+        console.log(data);
+        fetch('/login', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }).then(response => response.json())
+            .then(response => {
+                // console.log(response);
+                Auth.authenticateToken(response.token);
+                this.setState({
+                    auth: Auth.isUserAuthenticated()
+                });
+            }).catch(error => {
+                console.log(error);
+            });
+    }
+
     render() {
+
+        let routes = (
+            <Switch>
+                <Route 
+                    exact path="/signup" 
+                    render={ () => <Signup signupSubmit={ this.signupSubmitHandler }/> } />
+                <Route 
+                    exact path="/login" 
+                    render={ () => <Login loginSubmit={ this.loginSubmitHandler } /> } />
+                <Route path="/" component={ Landing } />
+            </Switch>
+        );
+
+        if (this.state.auth) {
+            routes = (
+                <Switch>
+                    <Route path="/dashboard" component={ Dashboard } />
+                    <Route path="/friends" component={ Friends } />
+                    <Route path="/profile" component={ Profile } />
+                </Switch>
+            );
+        };
+
         return (
             <BrowserRouter>
                 <div>
-                    <Switch>
-                        <Route path="/signup" component={ Signup } />
-                        <Route path="/login" component={ Login } />
-                        <Route path="/user/:id/dashboard" component={ Dashboard } />
-                        <Route path="/user/:id/friends" component={ Friends } />
-                        <Route path="/user/:id" component={ Profile } />
-                        <Route path="/" component={ Landing } />
-                    </Switch>
+                    { routes }
                 </div>                
             </BrowserRouter>
         );
