@@ -1,18 +1,36 @@
 import React, { Component } from 'react';
+import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 
-import styles from './ConquestMap.css';
+
+// import styles from './ConquestMap.css';
+
+// Geolocation 
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(displayLocationInfo);
+}
+
+let lng = '';
+let lat = '';
+
+function displayLocationInfo(position) {
+    lng = position.coords.longitude;
+    lat = position.coords.latitude;
+
+    console.log(`longitude: ${ lng } | latitude: ${ lat }`);
+}
 
 class ConquestMap extends Component {
     render() {
         return (
-            <div
-              className={ [styles.ConquestMap, styles[this.props.mapType]].join(' ') }>
-              THIS IS THE MAP  
-            </div>
+            <GoogleMap 
+                defaultZoom={17}
+                defaultCenter={{ lat: lat, lng: lng}} >
+                { this.props.isMarkerShown }    
+            </GoogleMap>
 
         );
     }
 }
 
 
-export default ConquestMap;
+export default withScriptjs(withGoogleMap(ConquestMap));

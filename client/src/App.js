@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 import Landing from './components/Landing/Landing';
 import Login from './components/Login/Login';
@@ -18,7 +18,8 @@ class App extends Component {
         super();
         
         this.state = {
-            auth: Auth.isUserAuthenticated()
+            auth: Auth.isUserAuthenticated(),
+            shouldRedirectToDash: false
         }
     }
 
@@ -38,7 +39,8 @@ class App extends Component {
                 // console.log(response);
                 Auth.authenticateToken(response.token);
                 this.setState({
-                    auth: Auth.isUserAuthenticated()
+                    auth: Auth.isUserAuthenticated(),
+                    shouldRedirectToDash: true
                 });
             }).catch( error => {
                 console.log(error);
@@ -59,11 +61,30 @@ class App extends Component {
                 // console.log(response);
                 Auth.authenticateToken(response.token);
                 this.setState({
-                    auth: Auth.isUserAuthenticated()
+                    auth: Auth.isUserAuthenticated(),
+                    shouldRedirectToDash: true
                 });
             }).catch(error => {
                 console.log(error);
             });
+    }
+
+    logoutHandler = () => {
+        fetch('/logout', {
+            method: 'DELETE',
+            headers: {
+                token: Auth.getToken(),
+                'Authorization': `Token ${Auth.getToken()}` 
+            }
+        }).then(response => {
+            console.log('Logging Out');
+            Auth.deauthenticateToken();
+            this.setState({
+                auth: Auth.isUserAuthenticated()
+            })
+        }).catch(error => {
+            console.log(error);
+        });
     }
 
     render() {
@@ -94,10 +115,12 @@ class App extends Component {
             <BrowserRouter>
                 <div>
                     { routes }
+                    {( this.state.shouldRedirectToDash) ? <Redirect to="/dashboard" /> : null}
                 </div>                
             </BrowserRouter>
         );
     }
 }
+
 
 export default App;

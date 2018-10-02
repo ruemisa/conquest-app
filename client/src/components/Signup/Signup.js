@@ -9,8 +9,8 @@ class SignUp extends Component {
         super();
 
         this.state = {
-            firstName: '',
-            lastName: '',
+            first_name: '',
+            last_name: '',
             username: '',
             email: '',
             password: '',
@@ -48,14 +48,14 @@ class SignUp extends Component {
                     <InputField 
                             type="text"
                             placeholder="First Name"
-                            name="firstName"
+                            name="first_name"
                             value={ this.state.firstName }
                             onChange={ this.inputChangeHandler } />
                     
                     <InputField
                             type="text"
                             placeholder="Last Name"
-                            name="lastName"
+                            name="last_name"
                             value={ this.state.lastName }
                             onChange={ this.inputChangeHandler }/>
 
