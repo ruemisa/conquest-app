@@ -6,8 +6,8 @@ import Button from '../UI/Button/Button';
 import styles from './Login.css';
 
 class Login extends Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
 
         this.state = {
             username: '',
@@ -21,42 +21,42 @@ class Login extends Component {
         const value = target.value;
         const name = target.name;
 
-        this.setState( { 
-            [name]: value 
+        this.setState({
+            [name]: value
         });
     }
 
-    onSubmitHandler = (e) => {
-        e.preventDefault();
-
-        console.log('You are logged in!');
-        this.props.history.push('/user/:id/dashboard')
-    }
+    // onSubmitHandler = (e) => {
+    //     e.preventDefault();
+    //     console.log(this.state)
+    //     console.log('You are logged in!');
+    //     this.props.history.push('/dashboard')
+    // }
 
     render() {
 
         return (
 
-            <div className={ styles.Login }>
-                <h2>Welcome Back <span className={ styles.Emphasis }>Conqueror</span></h2>
+            <div className={styles.Login}>
+                <h2>Welcome Back <span className={styles.Emphasis}>Conqueror</span></h2>
                 <p>Not a member? <Link to="/signup">Sign Up</Link></p>
-                <form onSubmit={ this.onSubmitHandler }>
-                    
-                    <InputField 
-                            type="text"
-                            placeholder="Username"
-                            name="username"
-                            value={ this.state.username }
-                            onChange={ this.inputChangeHandler } />
-                    
-                    <InputField 
-                            type="password"
-                            placeholder="Enter Password"
-                            name="password"
-                            value={ this.state.password }
-                            onChange={ this.inputChangeHandler } />
-                    
-                    <Button 
+                <form onSubmit={ (e) => this.props.loginSubmit(e, this.state) }>
+
+                    <InputField
+                        type="text"
+                        placeholder="Username"
+                        name="username"
+                        value={this.state.username}
+                        onChange={this.inputChangeHandler} />
+
+                    <InputField
+                        type="password"
+                        placeholder="Enter Password"
+                        name="password"
+                        value={this.state.password}
+                        onChange={this.inputChangeHandler} />
+
+                    <Button
                         btnType="Login"
                         btnSize="Large">
                         Log In

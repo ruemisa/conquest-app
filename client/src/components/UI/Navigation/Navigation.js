@@ -5,10 +5,10 @@ import styles from './Navigation.css';
 
 const navigation = () => (
     <ul className={ styles.Navigation }>
-        <NavigationItem link="/user/:id/profile">
+        <NavigationItem link="/profile">
             Profile
         </NavigationItem>
-        <NavigationItem link="/user/:id/friends">
+        <NavigationItem link="/friends">
             Friends
         </NavigationItem>
         <NavigationItem link="/">

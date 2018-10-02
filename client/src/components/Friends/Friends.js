@@ -7,7 +7,7 @@ import styles from './Friends.css';
 class Friends extends Component {
 
     onClickHandler = () => {
-        this.props.history.push('/user/:id/dashboard');
+        this.props.history.push('/dashboard');
     }
 
     onSubmitHandler = (e) => {
