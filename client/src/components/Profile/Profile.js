@@ -14,7 +14,7 @@ class Profile extends Component {
         this.state = {
             first_name: '',
             last_name: '',
-            profile_pic: null,
+            profile_pic: '',
             location: '',
         }
     }

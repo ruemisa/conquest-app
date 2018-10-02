@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import Toolbar from '../UI/Toolbar/Toolbar';
-import Button from '../UI/Button/Button';
 import ConquestMap from '../ConquestMap/ConquestMap';
 
 import styles from './Dashboard.css';
@@ -11,65 +10,35 @@ class Dashboard extends Component {
         super(props);
 
         this.state = {
-            mapExpanded: false
+
         }
     }
 
-    mapClosedHandler = () => {
-        console.log('closed');
-        this.setState({ mapExpanded: false });
-    }
-
-    mapExpandHandler = () => {
-        console.log('clicked');
-        this.setState({ mapExpanded: true });
-    }
-
-
     render() {
         
-        if (this.state.mapExpanded) {
-            return (
-                <React.Fragment>
-                    <Toolbar />
-                    <div className={ styles.MapArea }>
-                        <ConquestMap mapType="Expanded"/>
-                        <Button
-                            customStyle={ styles.MapButton }
-                            btnType="Close"
-                            btnShape="Round"
-                            btnSize="Small"
-                            onClick={ this.mapClosedHandler }> - </Button>
-                    </div>
+        return (
+            <React.Fragment>
+                <Toolbar />
+                <div className={ styles.MapArea }>
+                    <ConquestMap 
+                        isMarkerShown
+                        googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+                        loadingElement={<div style={{ height: `100%` }} />}
+                        containerElement={<div style={{ height: `400px` }} />}
+                        mapElement={<div style={{ height: `100%` }} />}/>
+                </div>
 
-                </React.Fragment>
-            );
-        } else {
-            return (
-                <React.Fragment>
-                    <Toolbar />
-                    <div className={ styles.MapArea }>
-                        <ConquestMap mapType="Compact" />
-                        <Button
-                            customStyle={ styles.MapButton }
-                            btnType="Open"
-                            btnSize="Small"
-                            btnShape="Round"
-                            onClick={ this.mapExpandHandler }> + </Button>
-                    </div>
-
-                    <div className={ styles.NoteBlock }>
-                        <h2>Notifications</h2>
-                        <ul>
-                            <li>List</li>
-                            <li>List</li>
-                            <li>List</li>
-                            <li>List</li>
-                        </ul>
-                    </div>
-                </React.Fragment>            
-            );
-        } 
+                <div className={ styles.NoteBlock }>
+                    <h2>Notifications</h2>
+                    <ul>
+                        <li>List</li>
+                        <li>List</li>
+                        <li>List</li>
+                        <li>List</li>
+                    </ul>
+                </div>
+            </React.Fragment>            
+        );
 
     }
 
