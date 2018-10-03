@@ -16,7 +16,7 @@ class Dashboard extends Component {
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         fetch('/dashboard', {
             method: 'GET',
             headers: {
@@ -65,6 +65,10 @@ class Dashboard extends Component {
         
     }
 
+    removeMarkerHander = () => {
+        console.log('clicked');
+    }
+
     render() {
         console.log(this.state.markers);
         console.log(this.state.current_user);
@@ -101,7 +105,8 @@ class Dashboard extends Component {
                         containerElement={<div style={{ height: `400px` }} />}
                         mapElement={<div style={{ height: `100%` }} />}
                         mapClicked={this.onMarkHandler}
-                        markers={ this.state.markers }/>
+                        markers={ this.state.markers }
+                        removeMarker={ this.removeMarkerHandler }/>
                 </div>
 
                 <div className={ styles.NoteBlock }>

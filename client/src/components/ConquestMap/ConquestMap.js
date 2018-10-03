@@ -39,7 +39,7 @@ class ConquestMap extends Component {
                     }
                 }
     
-                return <Marker key={id} {...marker} />
+                return <Marker key={id} {...marker} onClick={ this.props.removeMarker } />
             })
         }
             
