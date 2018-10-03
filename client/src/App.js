@@ -59,16 +59,19 @@ class App extends Component {
         }).then(response => response.json())
             .then(response => {
                 // console.log(response);
-                Auth.authenticateToken(response.token);
-                this.setState({
-                    auth: Auth.isUserAuthenticated(),
-                    shouldRedirectToDash: true
-                });
+                if (response.token) {
+                    Auth.authenticateToken(response.token);
+                    this.setState({
+                        auth: Auth.isUserAuthenticated(),
+                        shouldRedirectToDash: true
+                    });
+                }
+                
             }).catch(error => {
                 console.log(error);
             });
     }
-
+    // For logging out. Still trying to figure out how to implement this properly or if I am going to implement it at all since sessions are destroyed once app is closed 
     logoutHandler = () => {
         fetch('/logout', {
             method: 'DELETE',

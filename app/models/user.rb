@@ -1,5 +1,7 @@
 class User < ApplicationRecord
 
+  has_many :markers
+
   validates_uniqueness_of :username, :email
   has_secure_password
   # method built in rails ( this project has me learning new things lol ) 

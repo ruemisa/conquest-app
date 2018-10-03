@@ -16,6 +16,7 @@ class Profile extends Component {
             last_name: '',
             profile_pic: '',
             location: '',
+            current_user: '',
         }
     }
 
@@ -31,7 +32,8 @@ class Profile extends Component {
                 console.log(response);
                 this.setState({
                     first_name: response.user.first_name,
-                    last_name: response.user.last_name
+                    last_name: response.user.last_name,
+                    current_user: response.user.user_id
                 });
             }).catch(error => {
                 console.log(error);
@@ -43,6 +45,7 @@ class Profile extends Component {
     }
 
     render() {
+        console.log(this.state.current_user);
 
         let profileImage = ImageHolder;
         if (this.state.profile_pic) {
