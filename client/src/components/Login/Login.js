@@ -25,14 +25,7 @@ class Login extends Component {
             [name]: value
         });
     }
-
-    // onSubmitHandler = (e) => {
-    //     e.preventDefault();
-    //     console.log(this.state)
-    //     console.log('You are logged in!');
-    //     this.props.history.push('/dashboard')
-    // }
-
+    
     render() {
 
         return (

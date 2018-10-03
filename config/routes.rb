@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   delete '/logout' => "sessions#destroy"
 
   resources :users 
+  resources :markers
 
   get '/profile' => "users#profile"
-  
+  get '/dashboard' => "users#dashboard"
 end
