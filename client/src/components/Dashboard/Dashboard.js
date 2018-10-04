@@ -5,8 +5,11 @@ import ConquestMap from '../ConquestMap/ConquestMap';
 import Auth from '../../modules/Auth';
 
 
+
 import styles from './Dashboard.css';
 
+
+const API_KEY = `${process.env.REACT_APP_GOOGLE_API}`;
 class Dashboard extends Component {
     constructor(props) {
         super(props);
@@ -102,7 +105,7 @@ class Dashboard extends Component {
                 <div className={ styles.MapArea }>
                     <ConquestMap 
                         isMarkerShown
-                        googleMapURL="https://maps.googleapis.com/maps/api/js?key="
+                        googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${API_KEY}`}
                         loadingElement={<div style={{ height: `100%` }} />}
                         containerElement={<div style={{ height: `550px` }} />}
                         mapElement={<div style={{ height: `100%` }} />}
