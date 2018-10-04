@@ -68,7 +68,7 @@ class Dashboard extends Component {
     }
 
     // FIX RENDER UPON ADD
-    onSavePointHandler = (e, lat, lng) => {
+    onSavePointHandler = (e) => {
         e.preventDefault();
         console.log("Loaded Location:", lat, lng)
         const newLocation = {
@@ -142,7 +142,7 @@ class Dashboard extends Component {
                 <div className={ styles.NoteBlock }>
                     { notice }
                 </div>
-                <form onSubmit={ (e, lat, lng) => this.onSavePointHandler(e, lat, lng) }>
+                <form onSubmit={ (e) => this.onSavePointHandler(e) }>
                     <InputField 
                         type="text"
                         placeholder="Enter Info About P.O.I."

@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
 
-// Geolocation 
-
-
-
-
 class ConquestMap extends Component {
     constructor() {
         super();
@@ -50,7 +45,7 @@ class ConquestMap extends Component {
                         {...marker} 
                         onClick={ this.onToggleOpen }>
                         {this.state.isOpen && <InfoWindow onCloseClick={ this.onToggleClose}>
-                            <div>Hello</div>
+                            <div>{ venue.information }</div>
                         </InfoWindow> }
                     </Marker>
                 )
