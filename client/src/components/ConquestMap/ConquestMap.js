@@ -1,27 +1,32 @@
 import React, { Component } from 'react';
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
+import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
 
 // Geolocation 
 
-// MESSY BUT IT WORKS FOR NOW. CANT SEEM TO GET IT TO WORK AS A PROP ON PARENT 
-if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(displayLocationInfo);
-}
 
-let lng = '';
-let lat = '';
 
-function displayLocationInfo(position) {
-    lng = position.coords.longitude;
-    lat = position.coords.latitude;
-
-    console.log(`longitude: ${ lng } | latitude: ${ lat }`);
-}
-
-// e.placeId -> when clicking on a place
-// 
 
 class ConquestMap extends Component {
+    constructor() {
+        super();
+
+        this.state = {
+            isOpen: false,
+        }
+    }
+
+    componentWillMount() {
+        
+    }
+
+    onToggleOpen = () => {
+        this.setState({ isOpen: true })
+    }
+
+    onToggleClose = () => {
+        this.setState({ isOpen: false })
+    }
+
 
 
     render() {
@@ -38,7 +43,17 @@ class ConquestMap extends Component {
                     }
                 }
 
-                return <Marker label="POI" key={venue.id} {...marker} onDblClick={ () => this.props.removeMark(venue.id) } />
+                return (
+                    <Marker 
+                        label="POI" 
+                        key={venue.id} 
+                        {...marker} 
+                        onClick={ this.onToggleOpen }>
+                        {this.state.isOpen && <InfoWindow onCloseClick={ this.onToggleClose}>
+                            <div>Hello</div>
+                        </InfoWindow> }
+                    </Marker>
+                )
             })
         }
             
@@ -46,8 +61,7 @@ class ConquestMap extends Component {
         return (
             <GoogleMap 
                 defaultZoom={17}
-                defaultCenter={{ lat: lat, lng: lng}}
-                onClick={ this.props.mapClicked } >
+                defaultCenter={ this.props.defaultCenter }>
                 { mapMarkers }
                 
             </GoogleMap>
@@ -58,3 +72,5 @@ class ConquestMap extends Component {
 
 
 export default withScriptjs(withGoogleMap(ConquestMap));
+
+// FOR DELETE: onDblClick={ () => this.props.removeMark(venue.id) }
