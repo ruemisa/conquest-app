@@ -1,0 +1,37 @@
+{
+  "name": "conquest-app",
+  "version": "1.0.0",
+  "description": "A save point type of navigation map which allows you to save points of interest based on user's current location",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd client && npm install && npm run build && cd ..",
+    "deploy": "cp -a client/build/. public/",
+    "postinstall": "npm run build && npm run deploy && echo 'Client built!'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ruemisa/conquest-app.git"
+  },
+  "keywords": [
+    "conquest",
+    "explore",
+    "points",
+    "of",
+    "interest",
+    "save",
+    "point"
+  ],
+  "author": "Ruel Alfonso Misa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ruemisa/conquest-app/issues"
+  },
+  "homepage": "https://github.com/ruemisa/conquest-app#readme",
+  "engines": {
+    "node": "8.12.0"
+  }
+}
