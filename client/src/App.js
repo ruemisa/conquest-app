@@ -11,7 +11,6 @@ import Profile from './components/Profile/Profile';
 import './App.css';
 import Auth from './modules/Auth';
 
-
 class App extends Component {
     
     constructor() {

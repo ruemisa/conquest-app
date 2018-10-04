@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 
-// import styles from './ConquestMap.css';
-
 // Geolocation 
 
 // MESSY BUT IT WORKS FOR NOW. CANT SEEM TO GET IT TO WORK AS A PROP ON PARENT 
@@ -27,19 +25,20 @@ class ConquestMap extends Component {
 
 
     render() {
-
+        console.log(this.props.markers);
         let mapMarkers = null;
 
         if (this.props.markers) {
-            mapMarkers = this.props.markers.map((venue, id) => {
+            mapMarkers = this.props.markers.map((venue) => {
+
                 const marker = {
                     position: {
                         lat: venue.lat,
                         lng: venue.lng
                     }
                 }
-    
-                return <Marker key={id} {...marker} />
+
+                return <Marker label="POI" key={venue.id} {...marker} onDblClick={ () => this.props.removeMark(venue.id) } />
             })
         }
             

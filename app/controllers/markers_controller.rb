@@ -1,7 +1,12 @@
 class MarkersController < ApplicationController
 
   def create 
-    markers = Marker.create!(marker_params)
+    marker = Marker.create!(marker_params)
+  end
+
+  def destroy
+    marker = Marker.find(params[:id])
+    marker.destroy
   end
 
   private 
