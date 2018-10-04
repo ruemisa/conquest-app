@@ -35,8 +35,8 @@ module ConquestApp
     # rack-cors config
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins '*'
-        resource '*', headers: :any, methods: [:get, :post, :options]
+        origins 'http://localhost:3000', 'https://conquest-poi-app.herokuapp.com/' 
+        resource '*', :headers => :any, :methods => [:get]
       end
     end
     
