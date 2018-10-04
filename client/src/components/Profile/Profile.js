@@ -63,9 +63,9 @@ class Profile extends Component {
                 <div className={ styles.StatsList }>
                     <h2> Personal Stats </h2>
                     <ul>
-                        <li>Takeovers: ?</li>
-                        <li>Weekly Score: ? </li>
-                        <li>W/L ratio: ?</li>
+                        <li>Takeovers: Coming Soon</li>
+                        <li>Weekly Score: Coming Soon </li>
+                        <li>W/L ratio: Coming Soon</li>
                     </ul>
                 </div>
 

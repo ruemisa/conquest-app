@@ -4,6 +4,7 @@ import Toolbar from '../UI/Toolbar/Toolbar';
 import ConquestMap from '../ConquestMap/ConquestMap';
 import Auth from '../../modules/Auth';
 
+
 import styles from './Dashboard.css';
 
 class Dashboard extends Component {
@@ -11,8 +12,9 @@ class Dashboard extends Component {
         super(props);
 
         this.state = {
-            markers: [],
-            current_user: '',
+            markers: null,
+            current_user: null,
+            marked: null
         }
     }
 
@@ -35,6 +37,7 @@ class Dashboard extends Component {
             });
     }
 
+    // FIX RENDER UPON ADD
     onMarkHandler = (e) => {
         console.log("Map is clicked.", e, e.latLng.lat(), e.latLng.lng());
 
@@ -62,38 +65,37 @@ class Dashboard extends Component {
         }).catch(error => {
             console.log(error);
         });
+        this.setState({ marked: true });
         
     }
 
-    removeMarkerHander = () => {
-        console.log('clicked');
+    // FIX RENDER UPON DELETE
+    removeMarkerHandler = (mark_id) => {
+        console.log(mark_id);
+        console.log('I AM REMOVED');
+
+        fetch(`/markers/${mark_id}` , {
+            method: 'DELETE',
+        }).then(response => {
+            console.log(response);
+            this.setState({
+                marked: false
+            })
+        }).catch(error => {
+            console.log(error);
+        })
     }
 
     render() {
-        console.log(this.state.markers);
-        console.log(this.state.current_user);
 
-        // Geolocation 
-        // if (navigator.geolocation) {
-        //     navigator.geolocation.getCurrentPosition(displayLocationInfo);
-        // }
+        let notice = ( <h2>No new notice</h2>);
 
-        // let lng = '';
-        // let lat = '';
+        if (this.state.marked === true) {
+            notice = ( <h2 className={ styles.Added }>New point of interest!</h2>);
+        } else if (this.state.marked === false) {
+            notice = (<h2 className={ styles.Removed }> Point Removed! </h2>);
+        }
 
-        // function displayLocationInfo(position) {
-        //     lng = position.coords.longitude;
-        //     lat = position.coords.latitude;
-
-        //     console.log(`longitude: ${ lng } | latitude: ${ lat }`);
-        // }
-
-        // MAP NOT LOADING EVEN WITH PARSEFLOAT
-        // const center = {
-        //     lat: lat,
-        //     lng: lng
-        // }
-        
         return (
             <React.Fragment>
                 <Toolbar />
@@ -102,22 +104,18 @@ class Dashboard extends Component {
                         isMarkerShown
                         googleMapURL="https://maps.googleapis.com/maps/api/js?key="
                         loadingElement={<div style={{ height: `100%` }} />}
-                        containerElement={<div style={{ height: `400px` }} />}
+                        containerElement={<div style={{ height: `550px` }} />}
                         mapElement={<div style={{ height: `100%` }} />}
-                        mapClicked={this.onMarkHandler}
                         markers={ this.state.markers }
-                        removeMarker={ this.removeMarkerHandler }/>
+                        mapClicked={ this.onMarkHandler }
+                        removeMark={ this.removeMarkerHandler }
+                        user={ this.current_user }/>
+                </div>
+                <div className={ styles.NoteBlock }>
+                    { notice }
                 </div>
 
-                <div className={ styles.NoteBlock }>
-                    <h2>Notifications</h2>
-                    <ul>
-                        <li>List</li>
-                        <li>List</li>
-                        <li>List</li>
-                        <li>List</li>
-                    </ul>
-                </div>
+
             </React.Fragment>            
         );
 
