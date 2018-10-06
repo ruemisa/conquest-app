@@ -9,7 +9,6 @@
 1. Installation 
 1. Components 
 1. Author's Notes & Future Features 
-1. Credits
 1. Author
 
 #### Project Link ####
@@ -101,3 +100,61 @@ https://tomchentw.github.io/react-google-maps/#introduction
 
 
 #### Components ####
+
+* Landing Page 
+  * Contains the App Logo, name, and a Login and Signup buttons.
+
+* Login Page 
+  * Login form. It has a link to go to the Signup page if user is not a community member yet. 
+
+* Signup Page 
+  * Signup form. It also has a link to the Login Page, just in case the user presses the Login button on Landing Page by accident. 
+
+* Dashboard
+  * Upon Login or Signup, user is taken to the personal app dashboard.
+  * Toolbar/Header Panel is seen where the Logo and Navigation Menu is located. 
+  * Personal Map. This is where the Points of Interest (POI) are marked. 
+  * Notification Panel. Currently, it states that a point has been added.
+  * Add POI panel. This adds the current user's position to the personal map. It also allows the user to save information about that POI. 
+
+* Profile Page 
+  * Toolbar/Header is also present here. 
+  * This is the user's personal profile wherein just a profile picture, name, and user's origin location (city of residence).
+  * Edit button is added to allow users to edit their personal information (at least, the general details available on the profile page).
+  * Stats Panel. This is where user's stats will be placed. However, the panel is currently inactive. 
+  * Back (Button). To allow users to return to the previous page (currently, it just returns to the dashboard).
+
+* Friends Page 
+  * Displays a small list of friends. Link will be added to display a full page of user's friends. 
+  * Search Users element. Allows users to search for other users. Currently Inactive. 
+
+* Navigation Bar 
+  * Contains links to the profile page, friends page, and signout (currently in the works).
+
+#### Author's Notes & Future Features ####
+
+* Future Features 
+  1. Geolocation Marker. (Currently in the works)
+  1. User search & Friendship association. 
+  1. User Profile page to allow users to edit info and upload a profile pic. 
+  1. Upload image along with information of POI. Better save point functionality and UI. 
+  1. Allow users to share these POIs with other users.
+  1. Mini game element (from original idea). Allow users to compete with each other into conquering each other's territory. Conquests is the name of the app after all. 
+
+* Author's Notes.
+  As it currently stands, the app only has limited capabilities. I just established a base for an ongoing project. As the app grows, I might employ other people's help. 
+
+  I do hope some day, I will be able to launch this in order to help users who love exploring places remember discoveries that they may come accross. They may have created a certain memory of that place. One of the key goals of this app is to help them store that memory.
+
+  This is an ongoing project that I plan to build further as my skills grow further. 
+
+  I know it might have been easier to create this through react native, which I plan to do after fleshing out what I need to do to improve the current status of the app first. 
+
+  By the way, in order to use react-google-maps properly, you need to also refer to the actual google maps documentation: 
+
+  https://developers.google.com/maps/documentation/javascript/tutorial
+
+  
+#### Author ####
+
+Ruel Alfonso Misa

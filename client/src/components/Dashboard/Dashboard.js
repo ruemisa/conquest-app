@@ -56,6 +56,23 @@ class Dashboard extends Component {
             });
     }
 
+    // TODO: Improve life cycle hook methods to be able to render the map upon pinning location
+    // TODO: Add a way to track the current location of the user (improve on Geolocation/Geocoder, see Geocoding in react)
+    // TODO: Implement a way to delete (or build on the current available method in map component)
+    static getDerivedStateFromProps(nextProps, prevState) {
+        if (nextProps.markers !== prevState.markers) {
+            console.log(nextProps.markers);
+            return {
+                markers: nextProps.markers
+            };
+        };
+        return null;
+    }
+
+    componentDidUpdate(nextProps) {
+        console.log('COMPONENT UPDATE',nextProps);
+    }
+
     inputChangeHandler = (e) => {
         console.log(e.target.value);
         const target = e.target;
