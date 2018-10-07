@@ -36,6 +36,10 @@
   background-color: blue;
 }
 
+.Delete {
+  background-color: red;
+}
+
 /* Button Sizes */
 
 .Large {

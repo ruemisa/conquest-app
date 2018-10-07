@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
 
+import Button from '../UI/Button/Button';
 class ConquestMap extends Component {
     constructor() {
         super();
@@ -45,7 +46,13 @@ class ConquestMap extends Component {
                         {...marker} 
                         onClick={ this.onToggleOpen }>
                         {this.state.isOpen && <InfoWindow onCloseClick={ this.onToggleClose}>
-                            <div>{ venue.information }</div>
+                            <div>
+                                { venue.information }
+                                <Button 
+                                    onClick={ () => this.props.removeMark(venue.id) }
+                                    btnType="Delete"
+                                    btnSize="Small">X</Button>
+                            </div>
                         </InfoWindow> }
                     </Marker>
                 )
