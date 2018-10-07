@@ -12,6 +12,7 @@ import styles from './Dashboard.css';
 const API_KEY = `${process.env.REACT_APP_GOOGLE_API}`;
 
 // MESSY BUT IT WORKS FOR NOW. CANT SEEM TO GET IT TO WORK AS A PROP ON PARENT 
+// TODO: FIND A WAY TO GET THIS WORKING INSIDE THE CLASS
 if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(displayLocationInfo);
 }
@@ -25,6 +26,8 @@ function displayLocationInfo(position) {
 
     console.log(`longitude: ${ lng } | latitude: ${ lat }`);
 }
+
+
 class Dashboard extends Component {
     constructor(props) {
         super(props);
@@ -38,6 +41,66 @@ class Dashboard extends Component {
     }
 
     componentDidMount() {
+        this.fetchDataHandler();
+    }
+
+    // TODO: Improve life cycle hook methods to be able to render the map upon pinning location
+    // TODO: Add a way to track the current location of the user (improve on Geolocation/Geocoder, see Geocoding in react)
+    // TODO: Implement a way to delete (or build on the current available method in map component)
+    static getDerivedStateFromProps(nextProps, prevState) {
+        if (nextProps.markers !== prevState.markers) {
+            console.log(nextProps.markers);
+            return {
+                markers: nextProps.markers
+            };
+        };
+        return null;
+    }
+
+    componentDidUpdate(nextProps, prevState) {
+        console.log('COMPONENT UPDATE',nextProps, prevState);
+
+    }
+
+    // CHANGES INPUT VALUE 
+    inputChangeHandler = (e) => {
+        console.log(e.target.value);
+        const target = e.target;
+        const value = target.value;
+        const name = target.name;
+
+        this.setState({
+            [name]: value
+        });
+    }
+
+    // FIX RENDER UPON ADD
+    onSavePointHandler = (e) => {
+        e.preventDefault();
+        // console.log("Loaded Location:", lat, lng)
+        this.postDataHandler();
+    }
+
+    // FIX RENDER UPON DELETE
+    removeMarkerHandler = (mark_id) => {
+        console.log(mark_id);
+        console.log('I AM REMOVED');
+
+        fetch(`/markers/${mark_id}` , {
+            method: 'DELETE',
+        }).then(response => {
+            console.log(response);
+            this.setState({
+                marked: false
+            })
+        }).catch(error => {
+            console.log(error);
+        })
+    }
+
+    // FETCHING API DATA 
+
+    fetchDataHandler = () => {
         fetch('/dashboard', {
             method: 'GET',
             headers: {
@@ -56,38 +119,9 @@ class Dashboard extends Component {
             });
     }
 
-    // TODO: Improve life cycle hook methods to be able to render the map upon pinning location
-    // TODO: Add a way to track the current location of the user (improve on Geolocation/Geocoder, see Geocoding in react)
-    // TODO: Implement a way to delete (or build on the current available method in map component)
-    static getDerivedStateFromProps(nextProps, prevState) {
-        if (nextProps.markers !== prevState.markers) {
-            console.log(nextProps.markers);
-            return {
-                markers: nextProps.markers
-            };
-        };
-        return null;
-    }
+    // POST MARKER DATA TO SERVER 
 
-    componentDidUpdate(nextProps) {
-        console.log('COMPONENT UPDATE',nextProps);
-    }
-
-    inputChangeHandler = (e) => {
-        console.log(e.target.value);
-        const target = e.target;
-        const value = target.value;
-        const name = target.name;
-
-        this.setState({
-            [name]: value
-        });
-    }
-
-    // FIX RENDER UPON ADD
-    onSavePointHandler = (e) => {
-        e.preventDefault();
-        console.log("Loaded Location:", lat, lng)
+    postDataHandler = () => {
         const newLocation = {
         
             lat: lat,
@@ -112,23 +146,6 @@ class Dashboard extends Component {
             console.log(error);
         });
         this.setState({ marked: true });
-    }
-
-    // FIX RENDER UPON DELETE
-    removeMarkerHandler = (mark_id) => {
-        console.log(mark_id);
-        console.log('I AM REMOVED');
-
-        fetch(`/markers/${mark_id}` , {
-            method: 'DELETE',
-        }).then(response => {
-            console.log(response);
-            this.setState({
-                marked: false
-            })
-        }).catch(error => {
-            console.log(error);
-        })
     }
 
     render() {

@@ -154,6 +154,13 @@ https://tomchentw.github.io/react-google-maps/#introduction
 
   https://developers.google.com/maps/documentation/javascript/tutorial
 
+
+  NOTE LOG UPDATES:
+
+  (10-6-2018): GOOGLE API HATES ME. It told me that I already exceed my quota for the day. Also tried to place geolocation setter inside the class component but no luck. Map stays blank. Also, cant test the asynchronous updating of the map upon adding mark because of Google API. 
+
+  Added a delete button for the InfoWindow. Should work the same way as last time I added a delete functionality on the app. Will test more tomorrow. 
+
   
 #### Author ####
 
