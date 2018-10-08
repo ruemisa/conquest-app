@@ -11,10 +11,6 @@ class ConquestMap extends Component {
         }
     }
 
-    componentWillMount() {
-        
-    }
-
     onToggleOpen = () => {
         this.setState({ isOpen: true })
     }

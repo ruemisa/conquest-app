@@ -47,20 +47,6 @@ class Dashboard extends Component {
     // TODO: Improve life cycle hook methods to be able to render the map upon pinning location
     // TODO: Add a way to track the current location of the user (improve on Geolocation/Geocoder, see Geocoding in react)
     // TODO: Implement a way to delete (or build on the current available method in map component)
-    static getDerivedStateFromProps(nextProps, prevState) {
-        if (nextProps.markers !== prevState.markers) {
-            console.log(nextProps.markers);
-            return {
-                markers: nextProps.markers
-            };
-        };
-        return null;
-    }
-
-    componentDidUpdate(nextProps, prevState) {
-        console.log('COMPONENT UPDATE',nextProps, prevState);
-
-    }
 
     // CHANGES INPUT VALUE 
     inputChangeHandler = (e) => {
@@ -82,11 +68,11 @@ class Dashboard extends Component {
     }
 
     // FIX RENDER UPON DELETE
-    removeMarkerHandler = (mark_id) => {
-        console.log(mark_id);
+    removeMarkerHandler = (id) => {
+        console.log(id);
         console.log('I AM REMOVED');
 
-        fetch(`/markers/${mark_id}` , {
+        fetch(`/markers/${id}` , {
             method: 'DELETE',
         }).then(response => {
             console.log(response);
