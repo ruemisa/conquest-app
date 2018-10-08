@@ -157,9 +157,9 @@ https://tomchentw.github.io/react-google-maps/#introduction
 
   NOTE LOG UPDATES:
 
-  (10-6-2018): GOOGLE API HATES ME. It told me that I already exceed my quota for the day. Also tried to place geolocation setter inside the class component but no luck. Map stays blank. Also, cant test the asynchronous updating of the map upon adding mark because of Google API. 
+  (10-7-2018): GOOGLE API STILL HATES ME. Removed 2 lifecycle hooks that I recently added because it was interferring with API call for markers. Need to find a better solution. Still trapped for now. 
 
-  Added a delete button for the InfoWindow. Should work the same way as last time I added a delete functionality on the app. Will test more tomorrow. 
+  Might also consider use MapBox instead of Google. Still finding a way to implement this cleanly.  
 
   
 #### Author ####
