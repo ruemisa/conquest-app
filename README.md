@@ -157,9 +157,12 @@ https://tomchentw.github.io/react-google-maps/#introduction
 
   NOTE LOG UPDATES:
 
-  (10-7-2018): GOOGLE API STILL HATES ME. Removed 2 lifecycle hooks that I recently added because it was interferring with API call for markers. Need to find a better solution. Still trapped for now. 
+  (10-8-2018): SINCE GOOGLE API HATES ME, I decided to generate myself a new API key from google. Now it works... FOR NOW. 
 
-  Might also consider use MapBox instead of Google. Still finding a way to implement this cleanly.  
+  Removed delete button for the time being. 
+  Able to asynchronously display markers upon adding point of interest. Huge step. No need to add lifecycle hooks for this. Just fixed my post handler. 
+
+  Going to take a stab at the delete functionality. Also going to implement geo tracker to track current user's location. Which means, I will have loads of fun moving forward.  
 
   
 #### Author ####
