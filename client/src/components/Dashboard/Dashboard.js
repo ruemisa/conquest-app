@@ -33,7 +33,7 @@ class Dashboard extends Component {
         super(props);
 
         this.state = {
-            markers: null,
+            markers: [],
             current_user: null,
             information: '',
             marked: null,
@@ -128,6 +128,9 @@ class Dashboard extends Component {
             }
         }).then(response => {
             console.log(response);
+            let updatedMarkers = [...this.state.markers];
+            updatedMarkers.push(newLocation);
+            this.setState({ updatedMarkers});
         }).catch(error => {
             console.log(error);
         });
