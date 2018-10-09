@@ -162,7 +162,7 @@ https://tomchentw.github.io/react-google-maps/#introduction
   Removed delete button for the time being. 
   Able to asynchronously display markers upon adding point of interest. Huge step. No need to add lifecycle hooks for this. Just fixed my post handler. 
 
-  Going to take a stab at the delete functionality. Also going to implement geo tracker to track current user's location. Which means, I will have loads of fun moving forward.  
+  Going to take a stab at the delete functionality. Also going to implement geo tracker to track current user's location. Which means, I will have loads of fun moving forward with this app. 
 
   
 #### Author ####
