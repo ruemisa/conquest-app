@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
 
-import Button from '../UI/Button/Button';
+// import Button from '../UI/Button/Button';
 class ConquestMap extends Component {
     constructor() {
         super();
@@ -22,11 +22,10 @@ class ConquestMap extends Component {
 
 
     render() {
-        console.log(this.props.markers);
         let mapMarkers = null;
 
         if (this.props.markers) {
-            mapMarkers = this.props.markers.map((venue) => {
+            mapMarkers = this.props.markers.map((venue, index) => {
 
                 const marker = {
                     position: {
@@ -38,16 +37,12 @@ class ConquestMap extends Component {
                 return (
                     <Marker 
                         label="POI" 
-                        key={venue.id} 
+                        key={index} 
                         {...marker} 
                         onClick={ this.onToggleOpen }>
                         {this.state.isOpen && <InfoWindow onCloseClick={ this.onToggleClose}>
                             <div>
                                 { venue.information }
-                                <Button 
-                                    onClick={ () => this.props.removeMark(venue.id) }
-                                    btnType="Delete"
-                                    btnSize="Small">X</Button>
                             </div>
                         </InfoWindow> }
                     </Marker>

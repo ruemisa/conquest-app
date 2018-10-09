@@ -44,13 +44,11 @@ class Dashboard extends Component {
         this.fetchDataHandler();
     }
 
-    // TODO: Improve life cycle hook methods to be able to render the map upon pinning location
     // TODO: Add a way to track the current location of the user (improve on Geolocation/Geocoder, see Geocoding in react)
     // TODO: Implement a way to delete (or build on the current available method in map component)
 
     // CHANGES INPUT VALUE 
     inputChangeHandler = (e) => {
-        console.log(e.target.value);
         const target = e.target;
         const value = target.value;
         const name = target.name;
@@ -63,13 +61,12 @@ class Dashboard extends Component {
     // FIX RENDER UPON ADD
     onSavePointHandler = (e) => {
         e.preventDefault();
-        // console.log("Loaded Location:", lat, lng)
         this.postDataHandler();
     }
 
     // FIX RENDER UPON DELETE
+    // TODO: FIND WAY TO REMOVE MARK UPON DELETION
     removeMarkerHandler = (id) => {
-        console.log(id);
         console.log('I AM REMOVED');
 
         fetch(`/markers/${id}` , {
@@ -95,7 +92,6 @@ class Dashboard extends Component {
             }
         }).then(response => response.json())
             .then(response => {
-                console.log(response);
                 this.setState({
                     markers: response.user.markers,
                     current_user: response.user.user_id
@@ -115,8 +111,6 @@ class Dashboard extends Component {
             user_id: this.state.current_user,
             information: this.state.information
         }
-        console.log(newLocation);
-        console.log(this.state.markers);
 
         fetch('/markers', {
             method: 'POST',
@@ -130,11 +124,10 @@ class Dashboard extends Component {
             console.log(response);
             let updatedMarkers = [...this.state.markers];
             updatedMarkers.push(newLocation);
-            this.setState({ updatedMarkers});
+            this.setState({ markers: updatedMarkers, marked: true });
         }).catch(error => {
             console.log(error);
         });
-        this.setState({ marked: true });
     }
 
     render() {
