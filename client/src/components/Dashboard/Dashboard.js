@@ -11,23 +11,6 @@ import styles from './Dashboard.css';
 
 const API_KEY = `${process.env.REACT_APP_GOOGLE_API}`;
 
-// MESSY BUT IT WORKS FOR NOW. CANT SEEM TO GET IT TO WORK AS A PROP ON PARENT 
-// TODO: FIND A WAY TO GET THIS WORKING INSIDE THE CLASS
-if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(displayLocationInfo);
-}
-
-let lng = '';
-let lat = '';
-
-function displayLocationInfo(position) {
-    lng = position.coords.longitude;
-    lat = position.coords.latitude;
-
-    console.log(`longitude: ${ lng } | latitude: ${ lat }`);
-}
-
-
 class Dashboard extends Component {
     constructor(props) {
         super(props);
@@ -37,10 +20,15 @@ class Dashboard extends Component {
             current_user: null,
             information: '',
             marked: null,
+            location: {
+                lng: null,
+                lat: null
+            }
         }
     }
 
     componentDidMount() {
+        this.getCurrentLocation();
         this.fetchDataHandler();
     }
 
@@ -106,8 +94,8 @@ class Dashboard extends Component {
     postDataHandler = () => {
         const newLocation = {
         
-            lat: lat,
-            lng: lng,
+            lat: this.state.location.lat,
+            lng: this.state.location.lng,
             user_id: this.state.current_user,
             information: this.state.information
         }
@@ -128,6 +116,28 @@ class Dashboard extends Component {
         }).catch(error => {
             console.log(error);
         });
+    }
+
+    getCurrentLocation = () => {
+        let lng = '';
+        let lat = '';
+
+        const displayLocationInfo = (position) => {
+            lng = position.coords.longitude;
+            lat = position.coords.latitude;
+            
+            this.setState({
+                location: {
+                    lng: lng,
+                    lat: lat
+                }
+            })        
+        }
+        
+        if (navigator.geolocation) {
+            navigator.geolocation.watchPosition(displayLocationInfo);
+        }
+        
     }
 
     render() {
@@ -153,7 +163,7 @@ class Dashboard extends Component {
                         markers={ this.state.markers }
                         removeMark={ this.removeMarkerHandler }
                         user={ this.current_user }
-                        defaultCenter={{ lat: lat, lng: lng}}/>
+                        defaultCenter={{ lat: this.state.location.lat, lng: this.state.location.lng}}/>
                 </div>
                 <div className={ styles.NoteBlock }>
                     { notice }
