@@ -31,7 +31,6 @@ class UsersController < ApiController
         email: user.email,
         user_id: user.id,
         markers: user.markers
-
     }}
   end
 

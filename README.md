@@ -135,6 +135,7 @@ https://tomchentw.github.io/react-google-maps/#introduction
 
 * Future Features 
   1. Geolocation Marker. (Currently in the works)
+  1. Update the UI. I need it to be friendlier.
   1. User search & Friendship association. 
   1. User Profile page to allow users to edit info and upload a profile pic. 
   1. Upload image along with information of POI. Better save point functionality and UI. 
@@ -157,13 +158,19 @@ https://tomchentw.github.io/react-google-maps/#introduction
 
   NOTE LOG UPDATES:
 
-  (10-8-2018): SINCE GOOGLE API HATES ME, I decided to generate myself a new API key from google. Now it works... FOR NOW. 
+  (11-12-2018): It's been over a Month since I updated. Still busy job hunting, building other personal projects, improving my front-end skills. etc.  
 
-  Removed delete button for the time being. 
-  Able to asynchronously display markers upon adding point of interest. Huge step. No need to add lifecycle hooks for this. Just fixed my post handler. 
+  HUGE DECISION. Of course, I haven't forgotten about this app. I have decided to create an alternative version of this (by branching out of course). 
 
-  Going to take a stab at the delete functionality. Also going to implement geo tracker to track current user's location. Which means, I will have loads of fun moving forward with this app. 
+  Alternative version will: 
+  
+  SCRAP OUT the react-google-maps library and replace it with just plain old google maps. I believe that it's a better way for me to learn how to implement the maps properly without the aid of libraries. I also think that it will help improve my JavaScript skills. 
 
+  CHANGE THE UI: Colors, styling, etc. I know, I kind of rushed the styling for this to shell out a decent looking version that can be used. But I am currently planning the major changes on the UI already. STILL going to use CSS Modules, and not BEM (which I believe is more useful when using Sass). 
+
+  PRACTICE MAKING MY OWN LOGO. You heard it, I am tired of those logo generators. I WANT TO LEARN HOW TO MAKE MY OWN (which I am currently doing with the help of my wife lol). 
+
+  Thank you and watch out for updates around December (yes, it might take that long since I am still finishing up other personal projects).
   
 #### Author ####
 
